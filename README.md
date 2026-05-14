@@ -13,11 +13,21 @@ npm install list-of-graphemes-of-commonly-used-chinese-characters
 ```ts
 import characters from "list-of-graphemes-of-commonly-used-chinese-characters";
 
-console.log(characters.length); // number of characters in the list
-console.log(characters[0]);     // 一
+console.log(characters.length); // 4762
+
+// Most entries are a single character string
+console.log(characters[0]);  // "一"
+
+// Entries where multiple variant forms share the same index are string arrays
+// e.g. characters[16] === ["丟", "丢"]
+for (const entry of characters) {
+  if (Array.isArray(entry)) {
+    console.log("variants:", entry);
+  }
+}
 ```
 
-The default export is a flat `string[]` of characters in official list order.
+The default export is `Array<string | string[]>` with 4,762 entries in official list order. Single-character entries are plain strings; entries with variant forms are arrays of strings.
 
 ## Data source
 

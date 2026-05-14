@@ -1,7 +1,7 @@
 {
   "name": "list-of-graphemes-of-commonly-used-chinese-characters",
   "version": "0.0.0",
-  "description": "Typed JSON package for the List of Graphemes of Commonly-used Chinese Characters (常用字字形表), a list of commonly-used Chinese characters published by the Hong Kong Education Bureau.",
+  "description": "Typed JSON package for the List of Graphemes of Commonly-used Chinese Characters (常用字字形表), published by the Hong Kong Education Bureau. Exports Array<string | string[]> where variant forms sharing an index are grouped as string arrays.",
   "homepage": "https://github.com/leonsilicon/list-of-graphemes-of-commonly-used-chinese-characters#readme",
   "bugs": {
     "url": "https://github.com/leonsilicon/list-of-graphemes-of-commonly-used-chinese-characters/issues"
