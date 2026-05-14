@@ -1,0 +1,67 @@
+{
+  "name": "list-of-graphemes-of-commonly-used-chinese-characters",
+  "version": "0.0.0",
+  "description": "Typed JSON package for the List of Graphemes of Commonly-used Chinese Characters (常用字字形表), a list of commonly-used Chinese characters published by the Hong Kong Education Bureau.",
+  "homepage": "https://github.com/leonsilicon/list-of-graphemes-of-commonly-used-chinese-characters#readme",
+  "bugs": {
+    "url": "https://github.com/leonsilicon/list-of-graphemes-of-commonly-used-chinese-characters/issues"
+  },
+  "license": "MIT",
+  "author": "leonsilicon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonsilicon/list-of-graphemes-of-commonly-used-chinese-characters.git"
+  },
+  "keywords": [
+    "list-of-graphemes-of-commonly-used-chinese-characters",
+    "常用字字形表",
+    "commonly-used-chinese-characters",
+    "chinese-characters",
+    "traditional-chinese",
+    "hong-kong",
+    "hksar",
+    "hanzi",
+    "chinese",
+    "dataset",
+    "zh-hk"
+  ],
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "list-of-graphemes-of-commonly-used-chinese-characters.json",
+    "README.md"
+  ],
+  "type": "module",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "default": "./index.js"
+    },
+    "./list-of-graphemes-of-commonly-used-chinese-characters.json": "./list-of-graphemes-of-commonly-used-chinese-characters.json",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "parse": "node --experimental-strip-types scripts/parse.ts",
+    "check": "node -e \"import('./index.js').then((m)=>{const d=m.default; const isValid=(c)=>typeof c==='string'||(Array.isArray(c)&&c.length>1&&c.every((s)=>typeof s==='string')); const ok=Array.isArray(d)&&d.length>0&&d.every(isValid); if(!ok){throw new Error('Dataset shape is invalid: expected Array<string | string[]>.');} console.log('Dataset shape OK: '+d.length+' entries');})\"",
+    "test": "npm run check",
+    "prepack": "npm run check",
+    "prepublishOnly": "npm run check"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@typescript/native-preview": "7.0.0-dev.20260328.1",
+    "bumpp": "^11.0.1",
+    "typescript": "^6.0.2",
+    "vite-plus": "^0.1.14"
+  },
+  "overrides": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+  },
+  "packageManager": "bun@1.3.13"
+}
